@@ -18,6 +18,28 @@ in
     playerctl
     nerd-fonts.iosevka
 
+    #dev-tools
+    git
+    gh
+    curl
+    python3
+    uv 
+    go 
+    gopls
+    gcc
+    clang-tools
+    cmake
+    ninja
+    gdb
+    rustc
+    cargo 
+    rust-analyzer
+    rustfmt
+    clippy
+    lua-language-server
+    pyright
+    ruff 
+
     # Larping                 
     librewolf
     helium
@@ -29,9 +51,7 @@ in
     eza
     starship
     nerd-fonts.iosevka
-    git
     legcord
-    gh
     tree
     neovim
   ];
