@@ -5,6 +5,7 @@ let
 in
 {
   environment.systemPackages = with pkgs; [
+    swaylock
     waybar
     inputs.spotifast.packages."${pkgs.stdenv.hostPlatform.system}".default
     # Niri                  
@@ -27,6 +28,7 @@ in
     go 
     gopls
     gcc
+    golangci-lint
     clang-tools
     cmake
     ninja
@@ -53,6 +55,10 @@ in
     nerd-fonts.iosevka
     legcord
     tree
+    obsidian
+    xwayland-satellite
+    mysql-workbench
     neovim
+    libreoffice
   ];
 }

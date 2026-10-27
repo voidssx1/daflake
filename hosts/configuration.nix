@@ -24,5 +24,12 @@
     "flakes"
   ];
 
+  nixpkgs.config.allowUnfreePredicate = pkg:
+    builtins.elem (pkg.pname or "")[
+      "obsidian"
+    ];
+
+  security.pam.services.swaylock = {};
+
   system.stateVersion = "26.05";
 }
