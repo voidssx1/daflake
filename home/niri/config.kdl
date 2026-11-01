@@ -159,7 +159,7 @@ layout {
         // off
 
         // How many logical pixels the ring extends out from the windows.
-        width 4
+        width 1
 
         // Colors can be set in a variety of ways:
         // - CSS named colors: "red"
@@ -167,13 +167,13 @@ layout {
         // - CSS-like notation: "rgb(255, 127, 0)", rgba(), hsl() and a few others.
 
         // Color of the ring on the active monitor.
-        active-color "#7fc8ff"
+        active-color "#FFFFFF"
 
         // Color of the ring on inactive monitors.
         //
         // The focus ring only draws around the active window, so the only place
         // where you can see its inactive-color is on other monitors.
-        inactive-color "#505050"
+        inactive-color "#454545"
 
         // You can also use gradients. They take precedence over solid colors.
         // Gradients are rendered the same as CSS linear-gradient(angle, from, to).
@@ -262,9 +262,14 @@ layout {
     }
 }
 
+overview {
+    backdrop-color "#000000"
+}
+
 // Add lines like this to spawn processes at startup.
 spawn-at-startup "awww-daemon"
 spawn-at-startup "awww-daemon" "--namespace" "overview"
+spawn-at-startup "sh" "-c" "sleep 2; awww clear --namespace overview 000000ff"
 spawn-at-startup "sh" "-c" "sleep 2; awww img /home/aditya/Downloads/ica.png"
 
 // Note that running niri as a session supports xdg-desktop-autostart,
@@ -678,9 +683,9 @@ window-rule {
 
     focus-ring {
         on
-        width 2
-        active-color "#89b4fa"
-        inactive-color "#45475a"
+        width 1
+        active-color "#FFFFFF"
+        inactive-color "#454545"
     }
 
     background-effect {
@@ -701,5 +706,15 @@ window-rule {
     draw-border-with-background false
     border {
         off
+    }
+}
+
+
+layer-rule {
+    match namespace="^waybar$"
+    opacity 0.85
+    background-effect {
+        xray false
+        blur true
     }
 }
