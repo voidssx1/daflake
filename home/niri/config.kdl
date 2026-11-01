@@ -159,7 +159,7 @@ layout {
         // off
 
         // How many logical pixels the ring extends out from the windows.
-        width 1
+        width 0.25
 
         // Colors can be set in a variety of ways:
         // - CSS named colors: "red"
@@ -260,16 +260,23 @@ layout {
         // top 64
         // bottom 64
     }
+
+
+    background-color "#00000000"
+}
+
+// Keep the wallpaper stationary behind all workspaces and Overview.
+layer-rule {
+    match namespace="^awww-daemon$"
+    place-within-backdrop true
 }
 
 overview {
-    backdrop-color "#000000"
+    backdrop-color "#00000000"
 }
 
 // Add lines like this to spawn processes at startup.
 spawn-at-startup "awww-daemon"
-spawn-at-startup "awww-daemon" "--namespace" "overview"
-spawn-at-startup "sh" "-c" "sleep 2; awww clear --namespace overview 000000ff"
 spawn-at-startup "sh" "-c" "sleep 2; awww img /home/aditya/Downloads/ica.png"
 
 // Note that running niri as a session supports xdg-desktop-autostart,
@@ -306,12 +313,34 @@ screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 // The wiki explains how to configure individual animations:
 // https://niri-wm.github.io/niri/Configuration:-Animations
 animations {
-    // Uncomment to turn off all animations.
-    // off
-
-    // Slow down all animations by this factor. Values below 1 speed them up instead.
-    // slowdown 3.0
+    workspace-switch {
+        spring damping-ratio=1.0 stiffness=650 epsilon=0.0001
+    }
+    window-open {
+        duration-ms 220
+        curve "ease-out-expo"
+    }
+    window-close {
+        duration-ms 180
+        curve "ease-out-quad"
+    }
+    horizontal-view-movement {
+        spring damping-ratio=1.0 stiffness=650 epsilon=0.0001
+    }
+    window-movement {
+        spring damping-ratio=1.0 stiffness=650 epsilon=0.0001
+    }
+    window-resize {
+        spring damping-ratio=1.0 stiffness=650 epsilon=0.0001
+    }
+    overview-open-close {
+        spring damping-ratio=1.0 stiffness=650 epsilon=0.0001
+    }
 }
+
+
+
+
 
 // Window rules let you adjust behavior for individual windows.
 // Find more information on the wiki:
@@ -661,12 +690,6 @@ window-rule {
     }
 }
 
-blur {
-    passes 2
-    offset 3
-    noise 0.01
-    saturation 1.5
-}
 
 window-rule {
     match app-id="^kitty$"
@@ -683,7 +706,7 @@ window-rule {
 
     focus-ring {
         on
-        width 1
+        width 0.25
         active-color "#FFFFFF"
         inactive-color "#454545"
     }
@@ -709,12 +732,10 @@ window-rule {
     }
 }
 
-
+// ===== WAYBAR FROSTED GLASS BLUR =====
 layer-rule {
-    match namespace="^waybar$"
-    opacity 0.85
     background-effect {
-        xray false
         blur true
+        xray false
     }
 }
