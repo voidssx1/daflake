@@ -7,9 +7,9 @@
     ../modules/packages.nix
     ../modules/nix-ld.nix
     ../modules/users.nix
+    ../packages/grub.nix
   ];
 
-  boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.networkmanager.enable = true;
@@ -18,7 +18,8 @@
 
   programs.niri.enable = true;
   services.displayManager.ly.enable = true;
- 
+  time.timeZone = "Asia/Kolkata";
+
   nix.settings.experimental-features = [
     "nix-command"
     "flakes"

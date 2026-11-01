@@ -41,11 +41,12 @@ in
     lua-language-server
     pyright
     ruff 
+    nodejs
 
     # Larping                 
     librewolf
     helium
-    htop
+    btop
     fastfetch
     fzf
     bat
