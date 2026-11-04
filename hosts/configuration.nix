@@ -18,6 +18,7 @@
 
   programs.niri.enable = true;
   services.displayManager.ly.enable = true;
+
   time.timeZone = "Asia/Kolkata";
 
   nix.settings.experimental-features = [
@@ -26,9 +27,32 @@
   ];
 
   nixpkgs.config.allowUnfreePredicate = pkg:
-    builtins.elem (pkg.pname or "")[
+    builtins.elem (pkg.pname or "") [
       "obsidian"
+      "nvidia-x11"
+      "nvidia-settings"
     ];
+
+  # AMD + NVIDIA hybrid graphics
+  hardware.graphics.enable = true;
+
+  services.xserver.videoDrivers = [ "nvidia" ];
+
+  hardware.nvidia = {
+    open = true;
+    modesetting.enable = true;
+    nvidiaSettings = true;
+
+    prime = {
+      offload = {
+        enable = true;
+        enableOffloadCmd = true;
+      };
+
+      amdgpuBusId = "PCI:5@0:0:0";
+      nvidiaBusId = "PCI:1@0:0:0";
+    };
+  };
 
   security.pam.services.swaylock = {};
 
