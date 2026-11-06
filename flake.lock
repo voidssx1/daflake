@@ -87,11 +87,32 @@
         "type": "github"
       }
     },
+    "nvim": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1793940954,
+        "narHash": "sha256-H4BJCElG6vpUpabeTnYGNTLTEK02MD2Vb9HAmxJp2Do=",
+        "ref": "refs/heads/main",
+        "rev": "96e830295b5c697c4b96baa7ace426612d04809b",
+        "revCount": 3,
+        "type": "git",
+        "url": "file:///home/aditya/nvim-config"
+      },
+      "original": {
+        "type": "git",
+        "url": "file:///home/aditya/nvim-config"
+      }
+    },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
         "inir": "inir",
         "nixpkgs": "nixpkgs_2",
+        "nvim": "nvim",
         "spotifast": "spotifast"
       }
     },

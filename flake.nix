@@ -4,6 +4,12 @@
 
   inputs = {
     spotifast.url = "github:crmne/spotifast";
+
+    nvim = {
+      url = "git+file:///home/aditya/nvim-config";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
 
     home-manager = {

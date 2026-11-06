@@ -8,6 +8,8 @@ in
     swaylock
     waybar
     inputs.spotifast.packages."${pkgs.stdenv.hostPlatform.system}".default
+    inputs.nvim.packages."${pkgs.stdenv.hostPlatform.system}".default
+    inputs.nvim.packages."${pkgs.stdenv.hostPlatform.system}".default
     # Niri                  
     quickshell
     mako
@@ -26,21 +28,12 @@ in
     python3
     uv 
     go 
-    gopls
     gcc
-    golangci-lint
-    clang-tools
     cmake
     ninja
     gdb
     rustc
     cargo 
-    rust-analyzer
-    rustfmt
-    clippy
-    lua-language-server
-    pyright
-    ruff 
     nodejs
 
     # Larping                 
@@ -59,7 +52,6 @@ in
     obsidian
     xwayland-satellite
     mysql-workbench
-    neovim
     libreoffice
   ];
 }
